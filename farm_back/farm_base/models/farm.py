@@ -5,7 +5,7 @@ from farm_base.models.owner import Owner
 
 class Farm(models.Model):
     name = models.CharField(verbose_name=_("Name"), max_length=255,
-                            null=True, blank=True)
+                            null=False, blank=False)
 
     geometry = models.GeometryField(verbose_name=_("Geometry"),
                                     null=True, blank=True)
@@ -25,12 +25,12 @@ class Farm(models.Model):
     is_active = models.BooleanField(verbose_name=_("Is Active"), default=True)
 
     municipality = models.CharField(verbose_name=_("Municipality"), max_length=255,
-                                null=True, blank=True)
+                                null=False, blank=False)
 
     state = models.CharField(verbose_name=_("State"), max_length=255,
-                                null=True, blank=True)
+                                null=False, blank=False)
 
-    owner_id = models.ForeignKey(Owner, on_delete=models.CASCADE, null=False, default=1)
+    owner_id = models.ForeignKey(Owner, on_delete=models.CASCADE, null=False, blank=False, default=1)
 
     def __str__(self):
         return str(self.name)
