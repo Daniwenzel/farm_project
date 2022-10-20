@@ -20,10 +20,11 @@ class FarmAdmin(admin.ModelAdmin):
                     'creation_date', 'last_modification_date',
                     'is_active']
     list_filter = ['creation_date', 'last_modification_date', 'is_active']
-    search_fields = ['name', '=id']
+    search_fields = ['name', '=id', 'municipality', 'state', 'owner_id__name', 'owner_id__document']
 
     readonly_fields = ["centroid", "area"]
 
 
 admin.site.register(Owner, OwnerAdmin)
 admin.site.register(Farm, FarmAdmin)
+
